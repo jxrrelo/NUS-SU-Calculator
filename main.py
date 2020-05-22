@@ -228,7 +228,7 @@ def collect_letter_grades(update, context):
                     str(i[1]) + " module with " + str(i[0])
 
         update.message.reply_text(
-            output + "\n\nType '/start' to calculate again")
+            output + "\n\nNote : The system calculates the max CAP possible. You can refer to the step-by-step S/U flow to make a better decision.\n\nType '/start' to calculate again")
 
         user_data.clear()
         return ConversationHandler.END
