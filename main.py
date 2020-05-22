@@ -51,7 +51,7 @@ def start(update, context):
     update.message.reply_text(
         "Hey " + user.first_name +
         "! Let's do some Math and see which mods should we S/U"
-        "\n\nSo first, what's your overall CAP (Include the latest grades released. This is the cumulative CAP so far)"
+        "\n\nSo first, what's your overall CAP (This is the cumulative CAP so far after the results are released on 9th June)"
     )
     return CGPA
 
@@ -82,7 +82,7 @@ def collect_cgpa(update, context):
     else:
         context.user_data['CGPA'] = float(cgpa)
         update.message.reply_text("I see, your CAP thus far is " + cgpa +
-                                  "\n\nHow many MCs have you done? (including this sem)"
+                                  "\n\nHow many graded MCs have you done? (including this sem)"
                                   )
         return GRADED_CU
 
