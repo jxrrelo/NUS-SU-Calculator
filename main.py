@@ -207,10 +207,10 @@ def collect_letter_grades(update, context):
                 max_gpa['mods'].append(i)
 
             if(counter == 0):
-                output += "S/U the " + i[0] + " module with " + str(
+                output += "S/U the " + i[0] + " module with " + int(
                     i[1]) + " MCs, CAP = " + str(current_gpa)
             else:
-                output += "\nS/U another " + i[0] + " module with " + str(
+                output += "\nS/U another " + i[0] + " module with " + int(
                     i[1]) + " MCs, CAP = " + str(current_gpa)
 
             counter += 1
@@ -225,7 +225,7 @@ def collect_letter_grades(update, context):
             output += "\nThese modules should be S/U-ed:"
             for i in max_gpa['mods']:
                 output += "\n-\t\t" + \
-                    str(i[1]) + " module with " + str(i[0])
+                    int(i[1]) + "MCs module with " + str(i[0])
 
         update.message.reply_text(
             output + "\n\nNote : The system calculates the max CAP possible. You can refer to the step-by-step S/U flow to make a better decision.\n\nType '/start' to calculate again")
