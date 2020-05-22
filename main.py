@@ -51,7 +51,7 @@ def start(update, context):
     update.message.reply_text(
         "Hey " + user.first_name +
         "! Let's do some Math and see which mods should we S/U"
-        "\n\nSo first, what's your overall CAP (Include the latest grades released)"
+        "\n\nSo first, what's your overall CAP (Include the latest grades released. This is the cumulative CAP so far)"
     )
     return CGPA
 
@@ -207,10 +207,10 @@ def collect_letter_grades(update, context):
                 max_gpa['mods'].append(i)
 
             if(counter == 0):
-                output += "S/U the " + i[0] + " module with " + int(
+                output += "S/U the " + i[0] + " module with " + str(
                     i[1]) + " MCs, CAP = " + str(current_gpa)
             else:
-                output += "\nS/U another " + i[0] + " module with " + int(
+                output += "\nS/U another " + i[0] + " module with " + str(
                     i[1]) + " MCs, CAP = " + str(current_gpa)
 
             counter += 1
@@ -225,7 +225,7 @@ def collect_letter_grades(update, context):
             output += "\nThese modules should be S/U-ed:"
             for i in max_gpa['mods']:
                 output += "\n-\t\t" + \
-                    int(i[1]) + "MCs module with " + str(i[0])
+                    str(i[1]) + "MCs module with " + str(i[0])
 
         update.message.reply_text(
             output + "\n\nNote : The system calculates the max CAP possible. You can refer to the step-by-step S/U flow to make a better decision.\n\nType '/start' to calculate again")
