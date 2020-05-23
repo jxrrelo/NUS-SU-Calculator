@@ -51,7 +51,7 @@ def start(update, context):
     update.message.reply_text(
         "Hey " + user.first_name +
         "! Let's do some Math and see which mods should we S/U"
-        "\n\nSo first, what's your overall CAP (This is the cumulative CAP so far after the results are released on 9th June)"
+        "\n\nSo first, what's your overall CAP (This refers to your weighted average CAP across all your completed semesters, inclusive of the results released on 9th June)"
     )
     return CGPA
 
@@ -100,7 +100,7 @@ def collect_graded_CUs(update, context):
         return ConversationHandler.END
     else:
         update.message.reply_text("Number of graded MCs you have taken including this semester = " + gCUs
-                                  + "\n\nHow many modules are you taking this sem? Take care when overloading beyond the usual 5 mods"
+                                  + "\n\nHow many graded modules are you taking this sem? Take care when overloading beyond the usual 5 mods"
                                   )
         return MODS_THIS_SEM
 
@@ -206,6 +206,13 @@ def collect_letter_grades(update, context):
                 max_gpa['gpa'] = current_gpa
                 max_gpa['mods'].append(i)
 
+        if (max_gpa['mods'] > 5):
+            update.message.reply_text(
+                "The grades you have keyed in for this semester suggests that you have already attained a CAP of > 5 before this semester!\n\nWe need to restart this again.")
+            user_data.clear()
+            return ConversationHandler.END
+
+        else:
             if(counter == 0):
                 output += "S/U the " + i[0] + " module with " + str(
                     i[1]) + " MCs, CAP = " + str(current_gpa)
@@ -215,23 +222,23 @@ def collect_letter_grades(update, context):
 
             counter += 1
 
-        output += "\n\nWe calculated and the highest CAP possible is " + \
-            str(max_gpa['gpa']) + \
-            "\n\nHere's the next step recommended for you! "
+            output += "\n\nWe calculated and the highest CAP possible is " + \
+                str(max_gpa['gpa']) + \
+                "\n\nHere's the next step recommended for you! "
 
-        if len(max_gpa['mods']) == 0:
-            output += "\nWell, good news! You don't need to S/U any modules."
-        else:
-            output += "\nThese modules should be S/U-ed:"
-            for i in max_gpa['mods']:
-                output += "\n-\t\t" + \
-                    str(i[1]) + "MCs module with " + str(i[0])
+            if len(max_gpa['mods']) == 0:
+                output += "\nWell, good news! You don't need to S/U any modules."
+            else:
+                output += "\nThese modules should be S/U-ed:"
+                for i in max_gpa['mods']:
+                    output += "\n-\t\t" + \
+                        str(i[1]) + " MCs module with " + str(i[0])
 
-        update.message.reply_text(
-            output + "\n\nNote : The system calculates the max CAP possible. You can refer to the step-by-step S/U flow to make a better decision.\n\nType '/start' to calculate again")
+            update.message.reply_text(
+                output + "\n\nNote : The system calculates the max CAP possible. You can refer to the step-by-step S/U flow to make a better decision.\n\nType '/start' to calculate again")
 
-        user_data.clear()
-        return ConversationHandler.END
+            user_data.clear()
+            return ConversationHandler.END
 
 
 def cancel(update, context):
