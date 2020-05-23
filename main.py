@@ -206,7 +206,7 @@ def collect_letter_grades(update, context):
                 max_gpa['gpa'] = current_gpa
                 max_gpa['mods'].append(i)
 
-            if (max_gpa['mods'] > 5):
+            if (max_gpa['gpa'] > 5):
                 update.message.reply_text(
                     "The grades you have keyed in for this semester suggests that you have already attained a CAP of > 5 before this semester!\n\nWe need to restart this again.")
                 user_data.clear()
