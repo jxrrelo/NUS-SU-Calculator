@@ -109,6 +109,7 @@ def collect_mods_this_sem(update, context):
     num_of_mod = update.message.text
     user_data = context.user_data
     user = update.message.from_user
+    mc_keyboard = [['2'], ['3'], ['4']]
 
     if float(num_of_mod) <= 0:
         update.message.reply_text(
@@ -124,11 +125,11 @@ def collect_mods_this_sem(update, context):
         try:
             context.user_data['mods'] = int(num_of_mod)
             update.message.reply_text("Number of modules this semester = " + num_of_mod +
-                                      "\nHow many MC(s) is the 1st module?")
+                                      "\nHow many MC(s) is the 1st module?", reply_markup=ReplyKeyboardMarkup(mc_keyboard, one_time_keyboard=True))
         except:
             context.user_data['mods'] = round(float(num_of_mod), 0)
             update.message.reply_text("Number of modules this semester = " + num_of_mod + ". Let me just round it up to " + str(context.user_data['mods']) + " for you!"
-                                      "\n\nHow many MC(s) is the 1st module?")
+                                      "\n\nHow many MC(s) is the 1st module?", reply_markup=ReplyKeyboardMarkup(mc_keyboard, one_time_keyboard=True))
 
     context.user_data['grades'] = []
     context.user_data['temp_cus'] = 0
