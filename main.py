@@ -122,7 +122,6 @@ def collect_mods_this_sem(update, context):
         return MODS_THIS_SEM
     else:
         try:
-
             context.user_data['mods'] = int(num_of_mod)
             update.message.reply_text("Number of modules this semester = " + num_of_mod +
                                       "\nHow many MC(s) is the 1st module?")
@@ -176,8 +175,9 @@ def collect_letter_grades(update, context):
     i = len(context.user_data['grades'])+1
 
     if i <= context.user_data['mods']:
+        mc_keyboard = [['2'], ['3'], ['4']]
         update.message.reply_text("How many MCs is the " +
-                                  p.ordinal(i) + " module?", reply_markup=ReplyKeyboardRemove())
+                                  p.ordinal(i) + " module?", reply_markup=ReplyKeyboardMarkup(mc_keyboard, one_time_keyboard=True))
         return GRADES
     else:
         context.user_data['grades'] = sorted(sorted(
@@ -208,7 +208,8 @@ def collect_letter_grades(update, context):
 
             if (max_gpa['gpa'] > 5):
                 update.message.reply_text(
-                    "The grades you have keyed in for this semester suggests that you have already attained a CAP of > 5 before this semester!\n\nWe need to restart this again.")
+                    "The grades you have keyed in for this semester suggests that you have already"
+                    "attained a CAP of > 5 before this semester!\n\nType '/start' to calculate again.")
                 user_data.clear()
                 return ConversationHandler.END
 
