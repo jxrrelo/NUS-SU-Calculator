@@ -1,6 +1,7 @@
 import logging
 import inflect
 import os
+import telegram
 
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove,
                       InlineKeyboardButton, InlineKeyboardMarkup)
@@ -8,6 +9,7 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
                           ConversationHandler)
 
 PORT = int(os.environ.get('PORT', 5000))
+bot = telegram.Bot(token="1066494588:AAGLeeKyF4ySXf61_kRq_IP0OvIhhx5Ak5w")
 
 users = []
 
@@ -39,8 +41,8 @@ def start(update, context):
         "\n\nSo first, what's your overall CAP? (Including results released on 9th June)"
     )
 
-    update.sendPhoto(update.message.chat_id,
-                     photo="https://telegram.org/img/t_logo.png")
+    bot.sendPhoto(update.message.chat_id,
+                  photo="https://telegram.org/img/t_logo.png")
 
     return CGPA
 
