@@ -7,7 +7,7 @@ from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove,
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
                           ConversationHandler)
 
-PORT = int(os.environ.get('PORT', < PORT NUMBER >))
+PORT = int(os.environ.get('PORT', 5000))
 
 users = []
 
@@ -36,7 +36,7 @@ def start(update, context):
     update.message.reply_text(
         "Hey " + user.first_name +
         "! Let's do some Math and see which mods should we S/U"
-        "\n\nSo first, what's your overall CAP (This refers to your weighted average CAP across all your completed semesters, inclusive of the results released on 9th June)"
+        "\n\nSo first, what's your overall CAP?\n[Sum of all CAPs / Total MCs taken]. This includes results released on 9th June"
     )
     return CGPA
 
@@ -297,12 +297,12 @@ def main():
     dp.add_error_handler(error)
 
     # Start the Bot
-    updater.start_webhook(listen="<Address>",
+    updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
-                          url_path='<API key>')
+                          url_path='1066494588:AAGLeeKyF4ySXf61_kRq_IP0OvIhhx5Ak5w')
 
-    updater.bot.setWebhook('<Heroku Server Name>' +
-                           '<API Key>')
+    updater.bot.setWebhook('https://arcane-beach-85347.herokuapp.com/' +
+                           '1066494588:AAGLeeKyF4ySXf61_kRq_IP0OvIhhx5Ak5w')
 
     updater.idle()
 
