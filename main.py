@@ -40,7 +40,7 @@ def start(update, context):
     )
 
     update.send_photo(chat_id="nusacadplan_bot",
-                      photo=open('test.jpeg', 'rb'))
+                      photo='https://telegram.org/img/t_logo.png')
 
     return CGPA
 
