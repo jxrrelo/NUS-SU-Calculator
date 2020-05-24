@@ -39,8 +39,8 @@ def start(update, context):
         "\n\nSo first, what's your overall CAP? (Including results released on 9th June)"
     )
 
-    update.send_photo(chat_id="nusacadplan_bot",
-                      photo='https://telegram.org/img/t_logo.png')
+    update.message.send_photo(chat_id="nusacadplan_bot",
+                              photo="https://telegram.org/img/t_logo.png")
 
     return CGPA
 
