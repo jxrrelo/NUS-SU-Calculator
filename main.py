@@ -42,7 +42,7 @@ def start(update, context):
     )
 
     bot.sendPhoto(update.message.chat_id,
-                  photo=open("./test.jpeg", "rb"))
+                  photo=open("./cap.jpeg", "rb"))
 
     return CGPA
 
@@ -57,7 +57,7 @@ def collect_cgpa(update, context):
         return CGPA
     else:
         context.user_data['CGPA'] = float(cgpa)
-        update.message.reply_text("I see, your CAP thus far is " + cgpa +
+        update.message.reply_text("Great, your CAP thus far is " + cgpa +
                                   "\n\nHow many graded MCs have you done so far?"
                                   " (Includes this sem; does not include pass/fail and previously SU-ed mods)"
                                   )
