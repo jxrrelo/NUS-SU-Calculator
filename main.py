@@ -56,21 +56,6 @@ def start(update, context):
     return CGPA
 
 
-def response(update, context):
-    query = update.callback_query
-    if query == '1':
-        query.edit_message_text(text="Selected option: {}".format(query.data))
-
-
-def su_decider(update, context):
-    user = update.message.from_user
-
-    update.message.reply_text(
-        "So first, what's your cumulative CAP (Include the latest grades released)"
-    )
-    return CGPA
-
-
 def collect_cgpa(update, context):
     cgpa = update.message.text
 
@@ -93,9 +78,19 @@ def collect_graded_CUs(update, context):
     user = update.message.from_user
     context.user_data['gCUs'] = float(gCUs)
 
-    if float(gCUs) == 0:
+    if 0 < float(gCUs) < 16:
         update.message.reply_text(
-            user.first_name + ", I see you haven't done much this semester hmmm. Let me know!")
+            user.first_name + ", I see you haven't done much so far. Please try again with /start when you've done enough!")
+        user_data.clear()
+        return ConversationHandler.END
+    elif float(gCUs) < 0:
+        update.message.reply_text(
+            "Hmm... Negative number of MCs? Please try again with /start.")
+        user_data.clear()
+        return ConversationHandler.END
+    elif float(gCUs) > 300:
+        update.message.reply_text(
+            user.first_name + ", either you have made a typo error or you must be a genius! Please try again with /start.")
         user_data.clear()
         return ConversationHandler.END
     else:
@@ -209,7 +204,7 @@ def collect_letter_grades(update, context):
 
             if (max_gpa['gpa'] > 5):
                 update.message.reply_text(
-                    "The grades you have keyed in for this semester suggests that you have already"
+                    "The grades you have keyed in for this semester suggests that you have already "
                     "attained a CAP of > 5 before this semester!\n\nType '/start' to calculate again.")
                 user_data.clear()
                 return ConversationHandler.END
