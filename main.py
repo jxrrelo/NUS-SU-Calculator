@@ -42,7 +42,7 @@ def start(update, context):
     )
 
     bot.sendPhoto(update.message.chat_id,
-                  photo="https://telegram.org/img/t_logo.png")
+                  photo=open("/test.jpeg", "rb"))
 
     return CGPA
 
