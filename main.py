@@ -90,7 +90,7 @@ def collect_graded_CUs(update, context):
         return ConversationHandler.END
     elif float(gCUs) > 300:
         update.message.reply_text(
-            user.first_name + ", either you have made a typo error or you must be a genius! Please try again with /start.")
+            user.first_name + ", either you have keyed in an incorrect input or you must be a genius! Please try again with /start.")
         user_data.clear()
         return ConversationHandler.END
     else:
@@ -108,12 +108,12 @@ def collect_mods_this_sem(update, context):
 
     if float(num_of_mod) <= 0:
         update.message.reply_text(
-            user.first_name + ",  I see you have keyed in wrongly hmmm... Let me know agan!")
+            user.first_name + ", you must have keyed in an incorrect input, please let me know again!")
         user_data.clear()
         return ConversationHandler.END
     elif ((int(num_of_mod) * 0.5) > context.user_data['gCUs']) or int(num_of_mod) > 10:
         update.message.reply_text("Wow!!!! Are you sure you have done " + num_of_mod + " modules this semester?"
-                                  "\n\n Try again! How many modules are you taking this sem? "
+                                  "\n\nTry again! How many modules are you taking this sem? "
                                   )
         return MODS_THIS_SEM
     else:
