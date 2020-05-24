@@ -260,7 +260,7 @@ def main():
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
     updater = Updater(
-        "<API key>", use_context=True)
+        "1066494588:AAGLeeKyF4ySXf61_kRq_IP0OvIhhx5Ak5w", use_context=True)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
