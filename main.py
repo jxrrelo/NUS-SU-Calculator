@@ -36,10 +36,12 @@ def start(update, context):
     update.message.reply_text(
         "Hey " + user.first_name +
         "! Let's do some Math and see which mods should we S/U"
-        "\n\nSo first, what's your overall CAP?\n\nExample:\n"
-        "SEM 1.1 CAP = 4.2, MCs = 20\nSEM 1.2 CAP = 3.9, MCs = 24\n"
-        "Overall CAP = [(4.2 * 20) + (3.9 * 24)] / (20 + 24)"
+        "\n\nSo first, what's your overall CAP? (Including results released on 9th June)"
     )
+
+    update.send_photo(chat_id="nusacadplan_bot",
+                      photo=open('Projects/NUSAcadPlanBot/test.jpeg', 'rb'))
+
     return CGPA
 
 
