@@ -42,7 +42,7 @@ def start(update, context):
     )
 
     bot.sendPhoto(update.message.chat_id,
-                  photo=open("/test.jpeg", "rb"))
+                  photo=open("./test.jpeg", "rb"))
 
     return CGPA
 
