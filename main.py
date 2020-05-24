@@ -36,7 +36,9 @@ def start(update, context):
     update.message.reply_text(
         "Hey " + user.first_name +
         "! Let's do some Math and see which mods should we S/U"
-        "\n\nSo first, what's your overall CAP?\n[Sum of all CAPs / Total MCs taken]. This includes results released on 9th June"
+        "\n\nSo first, what's your overall CAP?\n\nExample:\n"
+        "SEM 1.1 CAP = 4.2, MCs = 20\nSEM 1.2 CAP = 3.9, MCs = 24\n"
+        "Overall CAP = [(4.2 * 20) + (3.9 * 24)] / (20 + 24)"
     )
     return CGPA
 
@@ -52,7 +54,8 @@ def collect_cgpa(update, context):
     else:
         context.user_data['CGPA'] = float(cgpa)
         update.message.reply_text("I see, your CAP thus far is " + cgpa +
-                                  "\n\nHow many graded MCs have you done? (including this sem)"
+                                  "\n\nHow many graded MCs have you done so far?"
+                                  " (Includes this sem; does not include pass/fail and previously SU-ed mods)"
                                   )
         return GRADED_CU
 
@@ -183,7 +186,7 @@ def collect_letter_grades(update, context):
             except:
                 current_gpa = 0.00
 
-            if (current_gpa > max_gpa['gpa']):
+            if (current_gpa >= max_gpa['gpa']):
                 max_gpa['gpa'] = current_gpa
                 max_gpa['mods'].append(i)
 
