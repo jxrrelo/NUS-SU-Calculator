@@ -40,7 +40,7 @@ def start(update, context):
     )
 
     update.send_photo(chat_id="nusacadplan_bot",
-                      photo=open('Projects/NUSAcadPlanBot/test.jpeg', 'rb'))
+                      photo=open('test.jpeg', 'rb'))
 
     return CGPA
 
