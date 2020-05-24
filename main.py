@@ -7,7 +7,7 @@ from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove,
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
                           ConversationHandler)
 
-PORT = int(os.environ.get('PORT', 5000))
+PORT = int(os.environ.get('PORT', < PORT NUMBER >))
 
 users = []
 
@@ -260,7 +260,7 @@ def main():
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
     updater = Updater(
-        "1066494588:AAGLeeKyF4ySXf61_kRq_IP0OvIhhx5Ak5w", use_context=True)
+        "<API key>", use_context=True)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
@@ -297,12 +297,12 @@ def main():
     dp.add_error_handler(error)
 
     # Start the Bot
-    updater.start_webhook(listen="0.0.0.0",
+    updater.start_webhook(listen="<Address>",
                           port=int(PORT),
-                          url_path='1066494588:AAGLeeKyF4ySXf61_kRq_IP0OvIhhx5Ak5w')
+                          url_path='<API key>')
 
-    updater.bot.setWebhook('https://arcane-beach-85347.herokuapp.com/' +
-                           '1066494588:AAGLeeKyF4ySXf61_kRq_IP0OvIhhx5Ak5w')
+    updater.bot.setWebhook('<Heroku Server Name>' +
+                           '<API Key>')
 
     updater.idle()
 
