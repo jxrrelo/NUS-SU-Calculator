@@ -257,7 +257,7 @@ def help_doc(update, context):
 
 
 def credits(update, context):
-    update.message.reply_text("Thank you for using this! Hope it did help you make a better decision! We will be upgrading this to include more features! Stay tuned :) " + "\n\nIf you have any cool ideas or feedback please do let us know!",
+    update.message.reply_text("Thank you for using NUS Acad Plan! Hope it helped you make a better decision! We will be upgrading this to include more features! Stay tuned :) " + "\n\nIf you have any cool ideas or feedback please let us know on tele @nussun123",
                               reply_markup=ReplyKeyboardRemove())
 
     return ConversationHandler.END
