@@ -30,5 +30,8 @@ updater.start_webhook(listen= < Listen Address >,
 updater.bot.setWebhook( < Server Name > +
                            < API Key > )
 ```
+<<<<<<< HEAD
 =======
 >>>>>>> aaa96ae6a045fcde34d0449080b00fc225bd6547
+=======
+>>>>>>> f2d8eb4d89f0f3d2296cc47a1bfc3cae034ed37d
