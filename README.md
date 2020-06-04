@@ -1,0 +1,2 @@
+# NUS-SU-Calculator
+In view of the COVID 19 situation, NUS has granted 10 additional MCs worth of S/U and lifted most of the S/U restrictions for students. NUS-SU-Calculator is a telegram bot specially built for AY19/20 Semester 2. It provides a guide on which modules to S/U in order to maximise one's CAP. The bot is stable, fast and accurate. It is officially pushed out for use on 24/05/2020 and has received an overwhelming 1000+ users till date. Bot address: https://t.me/nusacadplan_bot
