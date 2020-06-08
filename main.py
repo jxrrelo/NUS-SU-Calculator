@@ -2,23 +2,15 @@ import logging
 import inflect
 import os
 import telegram
-<<<<<<< HEAD
 import constants
-=======
->>>>>>> 9ec9bd06227949bb58b0caf6af18462e94ba6826
 
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove,
                       InlineKeyboardButton, InlineKeyboardMarkup)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
                           ConversationHandler)
 
-<<<<<<< HEAD
 PORT = int(os.environ.get('PORT', constants.PORT_NUMBER))
 bot = telegram.Bot(token=constants.API_KEY)
-=======
-PORT = int(os.environ.get('PORT', < Port Number > ))
-bot = telegram.Bot(token= < API Key >)
->>>>>>> 9ec9bd06227949bb58b0caf6af18462e94ba6826
 
 users = []
 
@@ -47,7 +39,7 @@ def start(update, context):
     update.message.reply_text(
         "Hey " + user.first_name +
         "! Let's do some Math and see which mods should we S/U"
-        "\n\nSo first, what's your overall CAP? (Including results released on 9th June)"
+        "\n\nSo first, what's your overall CAP? (Including results released on 9th June. The SMS will contain this overall CAP!)"
     )
 
     bot.sendPhoto(update.message.chat_id,
@@ -279,11 +271,7 @@ def main():
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
     updater = Updater(
-<<<<<<< HEAD
         constants.API_KEY, use_context=True)
-=======
-        < API Key > , use_context=True)
->>>>>>> 9ec9bd06227949bb58b0caf6af18462e94ba6826
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
@@ -320,21 +308,12 @@ def main():
     dp.add_error_handler(error)
 
     # Start the Bot
-<<<<<<< HEAD
     updater.start_webhook(listen=constants.LISTEN_ADDRESS,
                           port=int(PORT),
                           url_path=constants.API_KEY)
 
     updater.bot.setWebhook(constants.HEROKU_SERVER_ADDRESS +
                            constants.API_KEY)
-=======
-    updater.start_webhook(listen= < Listen Address >,
-                          port=int(PORT),
-                          url_path= < API Key >)
-
-    updater.bot.setWebhook( < Server Name > +
-                           < API Key > )
->>>>>>> 9ec9bd06227949bb58b0caf6af18462e94ba6826
 
     updater.idle()
 
